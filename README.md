@@ -7,8 +7,9 @@ a template for building jupyterhub-compatible docker images with repo2docker and
 
 1) click the "Use this template" button to create a repo copy
 
-1) create an image registry on DockerHub matching username/reponame
-For example: https://hub.docker.com/repository/docker/scottyhq/repo2docker-githubci
+1) create dockerhub account that matches your github username
+(could make this configurable)
+For example: https://hub.docker.com/u/scottyhq
 
 1) add DOCKER_USERNAME and DOCKER_PASSWORD to repo encrypyted secrets
 https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets
@@ -37,5 +38,5 @@ docker rm repo2docker
 
 ### or run on a binderhub
 Just point to the image in a seperate repo containing notebooks you want to run:
-
+https://github.com/scottyhq/githubci-binder-example
 
