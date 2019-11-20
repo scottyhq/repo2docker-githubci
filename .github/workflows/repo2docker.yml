@@ -59,6 +59,7 @@ jobs:
         else
           jupyter-repo2docker --debug --user-name jovyan --user-id 1000 --no-run --image-name $CONTAINER_NAME:latest $PWD
         fi
+        mkdir conda-packages
         docker run $CONTAINER_NAME:latest conda list > conda-packages/packages.txt
     - name: Archive Conda Package List
       # Seems that artifacts uploaded with restricted permissions, requiring chmod -R u+x to read content
