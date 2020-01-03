@@ -43,3 +43,13 @@ docker rm repo2docker
 ### Run your image on a BinderHub
 Now that you have images on DockerHub, you can re-use them in many ways. For example, create a BinderHub compatible content repository with 'binder' branch that points to a specific image. All your notebooks and scripts can be in the 'master' branch, and are pulled into a BinderHub session with [nbgitpuller](https://github.com/jupyterhub/nbgitpuller). Structuring things this way means that changes to your scripts won't trigger rebuilding large images:
 https://github.com/scottyhq/githubci-binder-example
+
+
+### Repo history and docker image tags
+If you want to check out the build settings for a particular image from https://hub.docker.com/r/scottyhq/repo2docker-githubci/tags, you can return to previous GitHub states with the commit tag. For the tag/short sha `0578e49` we can review the specific commit `https://github.com/scottyhq/repo2docker-githubci/commit/0578e49` or entire repository `https://github.com/scottyhq/repo2docker-githubci/tree/0578e49` at that point in time.
+
+You can also retrive the final list of conda packages installed by looking at the workflow artifact. The first line gets the full commit sha from the short sha:
+```bash
+LONGSHA=`curl --silent https://api.github.com/repos/scottyhq/repo2docker-githubci/commits/0578e49 | jq ".sha”`
+open https://github.com/scottyhq/repo2docker-githubci/commit/$LONGSHA/checks
+```
